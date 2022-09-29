@@ -1,26 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <input v-model="form.body" />
+
+  <button @click="addItem">Ajouter un item</button>
+
+  <li v-for="item in items" :key="item.$id">
+    {{ item.body }}
+  </li>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Item from './classes/Item';
+
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    
+  },
+  data(){
+    return {
+      form: {
+        body: ''
+      }
+    }
+  },
+  methods: {
+    addItem(){
+      Item.insert({data: this.form })
+    }
+  },
+  computed: {
+    items(){
+      return Item.all()
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
