@@ -79,7 +79,7 @@ export default {
           id: 55,
           bio: 'Je suis un developpeur!',
           life_goal: 'rien de special',        
-          user_id: 22,   
+
         }      
       }
     })
