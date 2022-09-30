@@ -74,18 +74,16 @@ export default {
       data: {
         id: 22,
         name: 'lapin',
-        email: 'lapin@gmail.com',        
+        email: 'lapin@gmail.com',  
+        profile: {
+          id: 55,
+          bio: 'Je suis un developpeur!',
+          life_goal: 'rien de special',        
+          user_id: 22,   
+        }      
       }
     })
 
-    Profile.insert({
-      data: {
-        id: 55,
-        bio: 'Je suis un developpeur!',
-        life_goal: 'rien de special',        
-        user_id: 22,        
-      }
-    })
   }
 }
 </script>
