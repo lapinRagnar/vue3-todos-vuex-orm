@@ -1,29 +1,29 @@
 <template>
 
-  <div class="centrer" v-for="profile in profiles" :key="profile.id">
+ 
+  <div v-for="list in user.lists" :key="list.id">
+    <p>
+      {{ list.title}}
+    </p>
 
-    <h1>Mon super vuex-ORM</h1>
-    <h3>Retation User --> profile</h3>
+    <ul>
+      <li
+        v-for="item in list.items"
+        :key="item.id"
+        v-text="item.body"
+      >
 
-    <h2>Nom: {{ user.name }}</h2>
-    <p>Bio: {{ user.profile.bio}}</p>
-    <p>Objectif: {{ user.profile.life_goal}}</p>
-
-    <hr>
-    <h3>Retation inverse profile --> user</h3>
-
-    <h2>Nom: {{ profile.user.name }}</h2>
-    <p>{{ profile.bio }}</p>
-
-    <input v-model="form.body" />
-
-    <button @click="addItem">Ajouter un item</button>
-
-    <li v-for="item in items" :key="item.$id">
-      {{ item.body }}
-    </li>
+      </li>
+    </ul>
 
   </div>
+
+  <input v-model="form.body" />
+
+  <button @click="addItem">Ajouter un item</button>
+
+
+  
 
 </template>
 
@@ -56,17 +56,12 @@ export default {
       return Item.all()
     },
     user(){
-      // return User.find(22)
       return User.query()
-              .with('profile')
+              .with('lists.items')
               .find(22)
     },
-    profiles(){
-      // return Profile.find(22)
-      return Profile.query()
-              .with('user')
-              .get()
-    }
+
+
   },
   beforeMount(){
 
@@ -76,24 +71,69 @@ export default {
           id: 22,
           name: 'lapin',
           email: 'lapin@gmail.com',  
-          profile: {
-            id: 55,
-            bio: 'Je suis un developpeur!',
-            life_goal: 'rien de special',        
+          lists: [
+            {
+              id: 1,
+              title: 'shopping',
+              items: [
+                {
+                  id: 1,
+                  body: 'banane',
+                },
+                {
+                  id: 2,
+                  body: 'poire',
+                },
+                {
+                  id: 3,
+                  body: 'pomme',
+                },
+              ] 
 
-          }      
+            },
+            {
+              id: 2,
+              title: 'faire du sport',
+              items: [
+                {
+                  id: 1,
+                  body: 'marathon',
+                },
+                {
+                  id: 10,
+                  body: 'basket',
+                },
+                {
+                  id: 11,
+                  body: 'natation',
+                },
+                {
+                  id: 12,
+                  body: 'randonnée',
+                },
+              ] 
+
+            },
+            {
+              id: 3,
+              title: 'apprendre la musique',
+              items: [
+                {
+                  id: 4,
+                  body: 'solfege',
+                },
+                {
+                  id: 5,
+                  body: 'rock',
+                },
+                {
+                  id: 6,
+                  body: 'country',
+                },
+              ] 
+            },
+          ]
         },
-        {
-          id: 1,
-          name: 'ragnar',
-          email: 'ragnar@gmail.com',  
-          profile: {
-            id: 5,
-            bio: 'Je suis un nageur!',
-            life_goal: 'les potes!',        
-
-          }      
-        }
       ]
     })
 

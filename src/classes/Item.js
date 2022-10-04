@@ -1,4 +1,5 @@
 import { Model } from '@vuex-orm/core'
+import List from './List'
 
 export default class Item extends Model {
 
@@ -9,7 +10,12 @@ export default class Item extends Model {
 
     return {
       id: this.attr(null),
-      body: this.attr('')
+      body: this.attr(''),
+      list_id: this.attr(null),
+      
+      // relationship
+      list: this.belongsTo(List, 'list_id')
+
     }
 
 

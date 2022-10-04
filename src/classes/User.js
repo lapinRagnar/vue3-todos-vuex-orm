@@ -1,4 +1,5 @@
 import { Model } from '@vuex-orm/core'
+import List from './List'
 import Profile from './Profile'
 
 export default class User extends Model {
@@ -14,7 +15,10 @@ export default class User extends Model {
       email: this.attr(''),
 
       // relation
-      profile: this.hasOne(Profile, 'user_id')
+      profile: this.hasOne(Profile, 'user_id'),
+
+      // a user has many lists
+      lists: this.hasMany(List, 'user_id')
     }
 
 
