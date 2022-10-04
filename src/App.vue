@@ -1,6 +1,6 @@
 <template>
 
-  <div class="centrer">
+  <div class="centrer" v-for="profile in profiles" :key="profile.id">
 
     <h1>Mon super vuex-ORM</h1>
     <h3>Retation User --> profile</h3>
@@ -61,27 +61,40 @@ export default {
               .with('profile')
               .find(22)
     },
-    profile(){
+    profiles(){
       // return Profile.find(22)
       return Profile.query()
               .with('user')
-              .find(55)
+              .get()
     }
   },
   beforeMount(){
 
     User.insert({
-      data: {
-        id: 22,
-        name: 'lapin',
-        email: 'lapin@gmail.com',  
-        profile: {
-          id: 55,
-          bio: 'Je suis un developpeur!',
-          life_goal: 'rien de special',        
+      data: [
+        {
+          id: 22,
+          name: 'lapin',
+          email: 'lapin@gmail.com',  
+          profile: {
+            id: 55,
+            bio: 'Je suis un developpeur!',
+            life_goal: 'rien de special',        
 
-        }      
-      }
+          }      
+        },
+        {
+          id: 1,
+          name: 'ragnar',
+          email: 'ragnar@gmail.com',  
+          profile: {
+            id: 5,
+            bio: 'Je suis un nageur!',
+            life_goal: 'les potes!',        
+
+          }      
+        }
+      ]
     })
 
   }
@@ -94,7 +107,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgb(103, 103, 81);
+    background: rgb(163, 163, 48);
     min-height: 300px;
     padding: 50px;
     margin: 20px 100px;
