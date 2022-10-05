@@ -62,13 +62,10 @@ export default {
     },
 
     items(){
-      let items = []
-      
-      this.user.lists.forEach(list => {
-        items.push(...list.items)
-      })
-
-      return items
+      return User.query()
+              .with('items')
+              .find(1)
+              .items
     }
 
 

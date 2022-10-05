@@ -1,4 +1,5 @@
 import { Model } from '@vuex-orm/core'
+import Item from './Item'
 import List from './List'
 import Profile from './Profile'
 
@@ -18,7 +19,10 @@ export default class User extends Model {
       profile: this.hasOne(Profile, 'user_id'),
 
       // a user has many lists
-      lists: this.hasMany(List, 'user_id')
+      lists: this.hasMany(List, 'user_id'),
+
+      // has many through cad user -> lists -> items
+      items: this.hasManyThrough(Item, List, 'user_id', 'list_id')
     }
 
 
