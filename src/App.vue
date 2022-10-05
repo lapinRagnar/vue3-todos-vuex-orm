@@ -69,27 +69,23 @@ export default {
           id: 1,
           name: 'lapin',
           email: 'lapin@gmail.com',  
-          list_ids: [10, 11, 12]
-        },
-      ]
-    }),
+          lists: [
+            {
+              id: 10,
+              title: 'faire les courses',
+              
+            },
+            {
+              id: 11,
+              title: 'faire la gym',
+              
+            },
+            {
+              id: 12,
+              title: 'faire des betises',
 
-    List.insert({
-      data: [
-        {
-          id: 10,
-          title: 'faire les courses',
-          
-        },
-        {
-          id: 11,
-          title: 'faire la gym',
-          
-        },
-        {
-          id: 12,
-          title: 'faire des betises',
-
+            },
+          ]
         },
       ]
     })
