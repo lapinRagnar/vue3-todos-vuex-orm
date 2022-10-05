@@ -13,13 +13,12 @@ export default class User extends Model {
       id: this.uid(),
       name: this.attr(''),
       email: this.attr(''),
-      list_ids: this.attr([]),
 
       // relation
       profile: this.hasOne(Profile, 'user_id'),
 
       // a user has many lists
-      lists: this.hasManyBy(List, 'list_ids')
+      lists: this.hasMany(List, 'user_id')
     }
 
 
