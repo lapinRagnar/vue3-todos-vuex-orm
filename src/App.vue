@@ -18,7 +18,7 @@
     essai
     <ul>
       <li
-        v-for="item in items"
+        v-for="item in user.items"
         v-text="item.body"
         :key="item.id"
       />
@@ -58,15 +58,9 @@ export default {
     user(){
       return User.query()
               .with('lists.items')
-              .find(1)
-    },
-
-    items(){
-      return User.query()
               .with('items')
               .find(1)
-              .items
-    }
+    },
 
 
   },
