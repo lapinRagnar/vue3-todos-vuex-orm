@@ -1,6 +1,7 @@
 <template>
 
- 
+  <h1>mon nom est - {{ user.name }}</h1>
+
   <div v-for="list in user.lists" :key="list.id">
     <p>
       {{ list.title}}
@@ -18,9 +19,6 @@
 
   </div>
 
-  <input v-model="form.body" />
-
-  <button @click="addItem">Ajouter un item</button>
 
 
   
@@ -30,7 +28,7 @@
 <script>
 import User from './classes/User'
 import Item from './classes/Item';
-import Profile from './classes/Profile';
+import List from './classes/List';
 
 
 
@@ -58,7 +56,7 @@ export default {
     user(){
       return User.query()
               .with('lists.items')
-              .find(22)
+              .find(1)
     },
 
 
@@ -68,71 +66,30 @@ export default {
     User.insert({
       data: [
         {
-          id: 22,
+          id: 1,
           name: 'lapin',
           email: 'lapin@gmail.com',  
-          lists: [
-            {
-              id: 1,
-              title: 'shopping',
-              items: [
-                {
-                  id: 1,
-                  body: 'banane',
-                },
-                {
-                  id: 2,
-                  body: 'poire',
-                },
-                {
-                  id: 3,
-                  body: 'pomme',
-                },
-              ] 
+          list_ids: [10, 11, 12]
+        },
+      ]
+    }),
 
-            },
-            {
-              id: 2,
-              title: 'faire du sport',
-              items: [
-                {
-                  id: 1,
-                  body: 'marathon',
-                },
-                {
-                  id: 10,
-                  body: 'basket',
-                },
-                {
-                  id: 11,
-                  body: 'natation',
-                },
-                {
-                  id: 12,
-                  body: 'randonnée',
-                },
-              ] 
+    List.insert({
+      data: [
+        {
+          id: 10,
+          title: 'faire les courses',
+          
+        },
+        {
+          id: 11,
+          title: 'faire la gym',
+          
+        },
+        {
+          id: 12,
+          title: 'faire des betises',
 
-            },
-            {
-              id: 3,
-              title: 'apprendre la musique',
-              items: [
-                {
-                  id: 4,
-                  body: 'solfege',
-                },
-                {
-                  id: 5,
-                  body: 'rock',
-                },
-                {
-                  id: 6,
-                  body: 'country',
-                },
-              ] 
-            },
-          ]
         },
       ]
     })
