@@ -1,17 +1,29 @@
 <template>
 
-  <h1>mon nom est - {{ user.name }}</h1>
+  <div style="float: left;">
 
-  <input v-model="form.title" />
-  <button @click="addList">ajouter list</button>
+    <h1>mon nom est - {{ user.name }}</h1>
 
-  <List
-    v-for="list in user.lists"
-    :key="list.id"
-    :list="list"
-  />
+    <input v-model="form.title" />
+    <button @click="addList">ajouter list</button>
 
-    
+    <List
+      v-for="list in user.lists"
+      :key="list.id"
+      :list="list"
+    />
+  </div>
+
+  <div style="float: right">
+    essai
+    <ul>
+      <li
+        v-for="item in items"
+        v-text="item.body"
+        :key="item.id"
+      />
+    </ul>
+  </div>
 
 </template>
 
@@ -49,6 +61,16 @@ export default {
               .find(1)
     },
 
+    items(){
+      let items = []
+      
+      this.user.lists.forEach(list => {
+        items.push(...list.items)
+      })
+
+      return items
+    }
+
 
   },
   beforeMount(){
@@ -63,17 +85,33 @@ export default {
             {
               id: 10,
               title: 'faire les courses',
+              items: [
+                {
+                  id: 9,
+                  body: 'banane'
+                }
+              ]
               
             },
             {
               id: 11,
               title: 'faire la gym',
-              
+              items: [
+                {
+                  id: 10,
+                  body: 'pomme'
+                }
+              ]
             },
             {
               id: 12,
               title: 'faire des betises',
-
+              items: [
+                {
+                  id: 11,
+                  body: 'ananas'
+                }
+              ]
             },
           ]
         },
