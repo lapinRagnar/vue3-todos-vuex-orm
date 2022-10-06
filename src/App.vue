@@ -1,8 +1,8 @@
 <template>
 
-  <h1 style="background-color: yellow;">Many to many relationship</h1>
+  <h1 style="background-color: orangered; border-bottom: 1px solid green;">One To One Polymorphic Relationship</h1>
 
-  <ManyToMany />
+  <OneToOnePolymorphic />
 
 </template>
 
@@ -10,6 +10,7 @@
 import User from './classes/User'
 import ListComponent from '@/components/List.vue'
 import ManyToMany from '@/components/ManyToMany.vue'
+import OneToOnePolymorphic from '@/components/OneToOnePolymorphic.vue'
 import List from './classes/List'
 
 
@@ -18,7 +19,7 @@ import List from './classes/List'
 export default {
   name: 'App',
   components: {
-    List: ListComponent, ManyToMany
+    List: ListComponent, ManyToMany, OneToOnePolymorphic
   },
   data(){
     return {

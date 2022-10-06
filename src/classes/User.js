@@ -1,4 +1,5 @@
 import { Model } from '@vuex-orm/core'
+import Image from './Image'
 import Item from './Item'
 import List from './List'
 import Profile from './Profile'
@@ -27,6 +28,8 @@ export default class User extends Model {
       items: this.hasManyThrough(Item, List, 'user_id', 'list_id'),
 
       roles: this.belongsToMany(Role, RoleUser, 'user_id', 'role_id'),
+
+      image: this.morphOne(Image, 'imageable_id', 'imageable_type'),
     }
 
 
