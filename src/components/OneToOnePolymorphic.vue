@@ -23,6 +23,14 @@
       style="width: 200px;"
     />
 
+    <h3>A qui appartient l'image</h3>
+    <div
+      v-for="image in aQuiAppartientImage"
+      :key="image.id"
+    >
+      {{ image.imageable.constructor.entity }}
+
+    </div>
 
 
   </div>
@@ -84,6 +92,12 @@
 
       images(){
         return Image.all()
+      },
+
+      aQuiAppartientImage(){
+        return Image.query()
+                .with('imageable')
+                .get()
       }
 
     }
