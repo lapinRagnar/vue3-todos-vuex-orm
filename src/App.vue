@@ -1,35 +1,15 @@
 <template>
 
-  <div style="float: left;">
+  <h1 style="background-color: yellow;">Many to many relationship</h1>
 
-    <h1>mon nom est - {{ user.name }}</h1>
-
-    <input v-model="form.title" />
-    <button @click="addList">ajouter list</button>
-
-    <List
-      v-for="list in user.lists"
-      :key="list.id"
-      :list="list"
-    />
-  </div>
-
-  <div style="float: right">
-    essai
-    <ul>
-      <li
-        v-for="item in user.items"
-        v-text="item.body"
-        :key="item.id"
-      />
-    </ul>
-  </div>
+  <ManyToMany />
 
 </template>
 
 <script>
 import User from './classes/User'
 import ListComponent from '@/components/List.vue'
+import ManyToMany from '@/components/ManyToMany.vue'
 import List from './classes/List'
 
 
@@ -38,7 +18,7 @@ import List from './classes/List'
 export default {
   name: 'App',
   components: {
-    List: ListComponent,
+    List: ListComponent, ManyToMany
   },
   data(){
     return {

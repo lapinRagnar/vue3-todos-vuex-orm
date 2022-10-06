@@ -7,6 +7,8 @@ import Item from '@/classes/Item'
 import User from '@/classes/User'
 import Profile from '@/classes/Profile'
 import List from '@/classes/List'
+import Role from '@/classes/Role'
+import RoleUser from '@/classes/RoleUser'
 
 
 
@@ -17,6 +19,8 @@ database.register(Item)
 database.register(User)
 database.register(Profile)
 database.register(List)
+database.register(Role)
+database.register(RoleUser)
 
 export default createStore({
   plugins: [VuexORM.install(database)]
