@@ -1,17 +1,20 @@
 <template lang="">
 
   <div>
-  
-    <ul v-for="user in users" :key="user.id">
-  
-      <h1>{{ user.name }}</h1>
-      
-      <li 
-        v-for="role in user.roles"
-        :key="role.id"
-        v-text="role.title"
-      />
     
+    <h2>relation inverse - lister les utilisateurs en fonction de son role</h2>
+    <ul
+      v-for="role in roles"
+      :key="role.id"
+
+    >
+      <h1>{{ role.title }}</h1>
+      <li 
+        v-for="user in role.users"
+        :key="user.id"
+        v-text="user.name"
+      />
+
     </ul>
 
   </div>
@@ -19,6 +22,7 @@
 <script>
   
   import User from '@/classes/User'
+  import Role from '@/classes/Role'
 
 export default {
   mounted(){
@@ -59,9 +63,9 @@ export default {
   },
 
   computed: {
-    users(){
-      return User.query()
-              .with('roles')
+    roles(){
+      return Role.query()
+              .with('users')
               .get()
     }
   },
