@@ -12,6 +12,19 @@
       :src="post.image.url"
       style="width: 200px;"
     >
+
+    <div style="border-top: 1px solid red; margin: 30px;"></div>
+    <h2> la relation inverse - afficher d'ou vient les images</h2>
+
+    <img
+      v-for="image in images"
+      :src="image.url"
+      :key="image.id"
+      style="width: 200px;"
+    />
+
+
+
   </div>
 
 </template>
@@ -33,6 +46,7 @@
             id: 1,
             name: 'lapinragnar',
             image: {
+              id: 2,
               url: 'https://ichef.bbci.co.uk/news/640/cpsprodpb/12D08/production/_125546077_61846252.png'
             }
           }
@@ -46,6 +60,7 @@
             id: 1,
             title: 'my awesom post',
             image: {
+              id: 1,
               url: "https://photos.tf1info.fr/images/1024/576/2_feature_1600x900_mercury-5bcebc-0@1x.jpeg"
             }
           }
@@ -65,6 +80,10 @@
         return Post.query()
                 .with('image')
                 .find(1)
+      },
+
+      images(){
+        return Image.all()
       }
 
     }

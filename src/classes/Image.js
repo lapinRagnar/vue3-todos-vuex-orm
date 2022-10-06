@@ -14,7 +14,7 @@ export default class Image extends Model {
       imageable_type: this.attr(null),     // exemple: user
 
       // relationship
-      image: this.morphTo('imageable_id', 'imageable_type')
+      imageable: this.morphTo('imageable_id', 'imageable_type')
 
     }
 
