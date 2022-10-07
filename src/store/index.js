@@ -11,6 +11,8 @@ import Role from '@/classes/Role'
 import RoleUser from '@/classes/RoleUser'
 import Image from '@/classes/Image'
 import Post from '@/classes/Post'
+import Video from '@/classes/Video'
+import Comment from '@/classes/Comment'
 
 
 
@@ -25,6 +27,8 @@ database.register(Role)
 database.register(RoleUser)
 database.register(Image)
 database.register(Post)
+database.register(Video)
+database.register(Comment)
 
 export default createStore({
   plugins: [VuexORM.install(database)]

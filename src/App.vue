@@ -1,8 +1,11 @@
 <template>
 
-  <h1 style="background-color: orangered; border-bottom: 1px solid green;">One To One Polymorphic Relationship</h1>
+  <h1
+    style="background-color: orangered; border-bottom: 1px solid green;"
+  >One To Many Polymorphic Relationship
+  </h1>
 
-  <OneToOnePolymorphic />
+  <OneToManyPolymorphic />
 
 </template>
 
@@ -12,6 +15,7 @@ import ListComponent from '@/components/List.vue'
 import ManyToMany from '@/components/ManyToMany.vue'
 import OneToOnePolymorphic from '@/components/OneToOnePolymorphic.vue'
 import List from './classes/List'
+import OneToManyPolymorphic from './components/OneToManyPolymorphic.vue'
 
 
 
@@ -19,8 +23,11 @@ import List from './classes/List'
 export default {
   name: 'App',
   components: {
-    List: ListComponent, ManyToMany, OneToOnePolymorphic
-  },
+    List: ListComponent,
+    ManyToMany,
+    OneToOnePolymorphic,
+    OneToManyPolymorphic
+},
   data(){
     return {
       form: {
