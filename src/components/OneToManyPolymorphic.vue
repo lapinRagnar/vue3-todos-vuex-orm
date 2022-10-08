@@ -30,10 +30,22 @@
       <p> {{ post.body }} </p>
 
       <h5>commentaire</h5>
-      <div v-for="comment in post.comments" :key="comment.id">
+      <div v-for="comment in comments" :key="comment.id">
         {{ comment.body }}
       </div>
     
+    </div>
+
+    <div>
+
+      <h1 >relation inverse Comment -> post, video</h1>
+      <div v-for="comment in comments" :key="comment.id">
+        {{ comment.body }}
+        <p style="margin-bottom: 40px;">
+          commentaire qui vient de - <strong>{{ comment.commentable.constructor.entity }}</strong>
+        </p>
+      </div>
+
     </div>
 
 
@@ -43,6 +55,7 @@
 <script>
 import Video from '@/classes/Video';
 import Post from '@/classes/Post';
+import Comment from '@/classes/Comment';
 
 export default {
   
@@ -74,20 +87,20 @@ export default {
     Post.insert({
       data: [
         {
-          id: 1,
+          id: 2,
           title: 'mon super titre de post',
           body: 'mon super body des mon super post',
           comments: [
             {
-              id: 10,
+              id: 21,
               body: 'mon comment sur le post c coool les mecs, aie aieuuuuh!'
             },
             {
-              id: 11,
+              id: 22,
               body: 'mon deuxieme comment polymorhic aie aieuuuh!'
             },
             {
-              id: 12,
+              id: 23,
               body: 'mon troisiemene comment!'
             },
           ]
@@ -107,6 +120,12 @@ export default {
     posts(){
       return Post.query()
               .with('comments')
+              .get()
+    },
+
+    comments(){
+      return Comment.query()
+              .with('commentable')
               .get()
     }
   }

@@ -14,7 +14,7 @@ export default class Comment extends Model {
       commentable_type: this.attr(null), 
 
       // relationship
-      
+      commentable: this.morphTo('commentable_id', 'commentable_type')
 
 
     }
