@@ -11,12 +11,20 @@ export default class User extends Model {
   // on met le nom item au pluriels et la class Item au singulier
   static entity = 'users'
 
+  get full_name(){
+    return `${this.firstName} - ${this.lastName}`
+  }
+
+
+
   static fields() {
 
     return {
       id: this.uid(),
       name: this.attr(''),
       email: this.attr(''),
+      firstName: this.attr(''),
+      lastName: this.attr('', value => value.toUpperCase()),
 
       // relation
       profile: this.hasOne(Profile, 'user_id'),

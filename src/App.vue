@@ -2,10 +2,10 @@
 
   <h1
     style="background-color: orangered; border-bottom: 1px solid green;"
-  >Many To Many Polymorphic Relationship
+  >Accessors and Mutators
   </h1>
 
-  <ManyToManyPolimorphic />
+  <AccessorAndMutators />
 
 </template>
 
@@ -15,7 +15,7 @@ import ListComponent from '@/components/List.vue'
 import ManyToMany from '@/components/ManyToMany.vue'
 import OneToOnePolymorphic from '@/components/OneToOnePolymorphic.vue'
 import List from './classes/List'
-import ManyToManyPolimorphic from './components/ManyToManyPolimorphic.vue'
+import AccessorAndMutators from './components/AccessorAndMutators.vue'
 
 
 
@@ -26,7 +26,7 @@ export default {
     List: ListComponent,
     ManyToMany,
     OneToOnePolymorphic,
-    ManyToManyPolimorphic
+    AccessorAndMutators
 },
   data(){
     return {
