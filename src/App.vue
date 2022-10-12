@@ -2,10 +2,10 @@
 
   <h1
     style="background-color: orangered; border-bottom: 1px solid green;"
-  >One To Many Polymorphic Relationship
+  >Many To Many Polymorphic Relationship
   </h1>
 
-  <OneToManyPolymorphic />
+  <ManyToManyPolimorphic />
 
 </template>
 
@@ -15,7 +15,7 @@ import ListComponent from '@/components/List.vue'
 import ManyToMany from '@/components/ManyToMany.vue'
 import OneToOnePolymorphic from '@/components/OneToOnePolymorphic.vue'
 import List from './classes/List'
-import OneToManyPolymorphic from './components/OneToManyPolymorphic.vue'
+import ManyToManyPolimorphic from './components/ManyToManyPolimorphic.vue'
 
 
 
@@ -26,7 +26,7 @@ export default {
     List: ListComponent,
     ManyToMany,
     OneToOnePolymorphic,
-    OneToManyPolymorphic
+    ManyToManyPolimorphic
 },
   data(){
     return {
@@ -101,7 +101,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
+  *{
+    background-color: dimgrey;
+    color: beige;
+  }
   .centrer{
     display: flex;
     flex-direction: column;

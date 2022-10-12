@@ -13,6 +13,8 @@ import Image from '@/classes/Image'
 import Post from '@/classes/Post'
 import Video from '@/classes/Video'
 import Comment from '@/classes/Comment'
+import Tag from '@/classes/Tag'
+import Taggable from '@/classes/Taggable'
 
 
 
@@ -29,6 +31,8 @@ database.register(Image)
 database.register(Post)
 database.register(Video)
 database.register(Comment)
+database.register(Tag)
+database.register(Taggable)
 
 export default createStore({
   plugins: [VuexORM.install(database)]
