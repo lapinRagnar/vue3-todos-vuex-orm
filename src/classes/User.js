@@ -15,7 +15,13 @@ export default class User extends Model {
     return `${this.firstName} - ${this.lastName}`
   }
 
-
+  static mutators(){
+    return {
+      lastName(value){
+        return value.toUpperCase()
+      }
+    }
+  }
 
   static fields() {
 
@@ -24,7 +30,7 @@ export default class User extends Model {
       name: this.attr(''),
       email: this.attr(''),
       firstName: this.attr(''),
-      lastName: this.attr('', value => value.toUpperCase()),
+      lastName: this.attr(''),
 
       // relation
       profile: this.hasOne(Profile, 'user_id'),
